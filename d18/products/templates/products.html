@@ -111,19 +111,19 @@
             </div>
 
             <div class="row">
-                {%for product in products%}
+                {% for product in products %}
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100">
                         <a href="#">
                             <img class="card-img-top"
-                                 src={product.image}
+                                 src={{product.image}}
                                  alt="">
                         </a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="#">{product.name}</a>
+                                <a href="#">{{product.name}}</a>
                             </h4>
-                            <h5>{product.price}</h5>
+                            <h5>{{product.price}}</h5>
                             <p class="card-text">Мягкая ткань для свитшотов. Стиль и комфорт – это образ жизни.</p>
                         </div>
                         <div class="card-footer text-center">
@@ -132,7 +132,7 @@
                     </div>
                 </div>
 
-                {%endfor%}
+                {% endfor %}
 
 
 
@@ -174,7 +174,7 @@
 
 <!-- FontAwesome script -->
 <script src="/static/vendor/fontawesome/fontawesome-icons.js" crossorigin="anonymous"></script>
-{%end for%}
+
 </body>
 
 </html>
