@@ -1,9 +1,11 @@
 from django.shortcuts import render
-
+from.models import *
 
 def index(request):
     context = {
-    'title': 'Рейх вещей'
+    'title': 'Рейх вещей',
+     'products' : Product.objects.all(),
+    'categories' : ProductCategory.objects.all()
     }
     return render(request, 'index.html', context = context)
 
@@ -11,7 +13,7 @@ def products(request):
     context = {
         'products' : [
             {'image':'/static/vendor/img/products/Adidas-hoodie.png',
-             'name':'Худи черного цветас монограммами Adidas Originals',
+             'name':'Худи черного цвета с монограммами Adidas Originals',
              'price':'6 090,00 руб.',
              'description': 'Мягкая ткань для свитшотов. Стиль и комфорт - это образ жизни.'} ,
 
