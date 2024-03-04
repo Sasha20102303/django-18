@@ -5,7 +5,7 @@ def index(request):
     context = {
     'title': 'Рейх вещей',
      'products' : Product.objects.all(),
-    'categories' : ProductCategory.objects.all()
+     'categories' : ProductCategory.objects.all()
     }
     return render(request, 'index.html', context = context)
 
@@ -15,7 +15,7 @@ def products(request):
             {'image':'/static/vendor/img/products/Adidas-hoodie.png',
              'name':'Худи черного цвета с монограммами Adidas Originals',
              'price':'6 090,00 руб.',
-             'description': 'Мягкая ткань для свитшотов. Стиль и комфорт - это образ жизни.'} ,
+             'description': 'Мягкая ткань для свитшотов. Стиль и комфорт - это образ жизни.'},
 
             {'image': '/static/vendor/img/products/Blue-jacket-The-North-Face.png',
              'name': 'Синяя куртка The North Face',
@@ -41,6 +41,15 @@ def products(request):
              'name': 'Темно-синие широкие строгие брюки ASOS DESIGN',
              'price': '2 890,00 руб.',
              'description': 'Легкая эластичная ткань сирсакер Фактурная ткань.'},
+
+            {'image': '/static/vendor/img/products/1648677871_5-kartinkof-club-p-reituzi-kartinki-smeshnie-5.jpg',
+             'name': 'Зимние мужские рейтузы Alfa samets',
+             'price': '9 000 000,00',
+             'description': 'Теплые зимние рейтузы сделанные из бороды Дяди Васи'}
+
+
+
+
         ]
 
     }
