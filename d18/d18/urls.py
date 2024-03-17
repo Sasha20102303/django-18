@@ -19,11 +19,13 @@ from django.urls import path
 from products.views import *
 from django.conf.urls.static import static
 from django.conf import settings
+from django.urls import include
 
 urlpatterns = [
-    path('admin', admin.site.urls),
-    path('', index),
-    path('products', products),
+    path('admin/', admin.site.urls),
+    path('', index, name = 'index'),
+    path('products/', include('products.urls', namespase='products')),
+    path('users/', include('users.urls', namespase = 'users'))
 ]
 
 #проверка того, что мы находим не на продакшне
