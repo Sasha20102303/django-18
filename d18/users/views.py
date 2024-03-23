@@ -1,15 +1,22 @@
 from django.shortcuts import render
 from .models import User
 from .forms import UserLoginForm
-from django.auth import reverse
+from django.urls import reverse
 from django.contrib import auth
 
 def login(request):
     if request.method == 'POST':
-        pass
-    #дописать
+        form = UserLoginForm(data=request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = auth.authenticate(username = username, password = password)
+            if user:
+                auth.login(request, user)
+    else:
+        form = UserLoginForm()
     context = {
-        'form':UserLoginForm(),
+        'form':form,
     }
     return render(request, 'users/login.html', context=context)
 

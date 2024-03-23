@@ -24,8 +24,8 @@ from django.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name = 'index'),
-    path('products/', include('products.urls', namespase='products')),
-    path('users/', include('users.urls', namespase = 'users'))
+    path('products/', include('products.urls', namespace='products')),
+    path('users/', include('users.urls', namespace='users'))
 ]
 
 #проверка того, что мы находим не на продакшне
