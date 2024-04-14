@@ -32,6 +32,16 @@ def register(request):
         context = {'form': form,}
     return render(request, 'users/register.html', context=context)
 
+def profile(request):
+    if request.method == 'GET'
+        form = UserProfileForm(data=request.GET)
+        if form.is_valid():
+            form.save()
+            return render(request, 'users/profile.html', context=context)
 
+
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect(reverse('index'))
 
 # Create your views here.
