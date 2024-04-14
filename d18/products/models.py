@@ -27,9 +27,18 @@ class Baskets(models.Model):
     #кол-во в корзине
     quantity = models.PositiveSmallIntegerField(default=0)
     #запись даты и времени создания объекта
-    created_timestamp = models.DateTimeField(auto_now_add=true)
+    created_timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'Корзина для {self.user.username} | Продукт: {self.product.name}'
+
+
+
+
+
+
+    def sum(self):
+        return self.product.price * self.quantity
+
 
 # Create your models here.

@@ -29,7 +29,10 @@ def basket_add(request, product_id:id):
     else:
         basket
 
-
+def basket_remove(request, basket_id):
+    basket = Basket.objects.get(id = basket_id)
+    basket.delete()
+    return Htt
 
 
 # Create your views here.
