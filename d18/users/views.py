@@ -37,13 +37,19 @@ def register(request):
 
 
 
+@login_required
 def profile(request):
-        form = UserProfileForm(instance=request.user),
+        if request.method == "POST":
+            form = UserProfileForm(instance=request.user),
+            if form.is_valid():
     context = {'title':'Профиль',
                'form': form,
-               'baskets': Basket.objects.all()}
+               'Baskets': basket.objects.all()}
     return render(request, 'users/profile.html', context = context)
+
 
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect(reverse('index'))
+
+
