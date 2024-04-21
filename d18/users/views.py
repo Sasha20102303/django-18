@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from .models import User
-from .forms import UserLoginForm
+from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm, UserCreationForm
 from django.urls import reverse
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 
 def login(request):
     if request.method == 'POST':
@@ -40,11 +42,15 @@ def register(request):
 @login_required
 def profile(request):
         if request.method == "POST":
-            form = UserProfileForm(instance=request.user),
+            form = UserProfileForm(instance=request.user, data = request.POST, files=request.FILES),
             if form.is_valid():
-    context = {'title':'Профиль',
-               'form': form,
-               'Baskets': basket.objects.all()}
+                form.save()
+                return HttpResponseRedirect(reverse('users:profile'))
+            else:
+                print(form.errors)
+        else:
+            form = UserProfileForm(instance=request.user)
+    context = {'title':'Профиль', 'form': form,}
     return render(request, 'users/profile.html', context = context)
 
 

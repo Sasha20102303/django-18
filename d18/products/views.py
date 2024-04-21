@@ -32,7 +32,7 @@ def basket_add(request, product_id:id):
 def basket_remove(request, basket_id):
     basket = Basket.objects.get(id = basket_id)
     basket.delete()
-    return Htt
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
 
 # Create your views here.
