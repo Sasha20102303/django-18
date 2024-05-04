@@ -50,8 +50,9 @@ def profile(request):
                 print(form.errors)
         else:
             form = UserProfileForm(instance=request.user)
-    context = {'title':'Профиль', 'form': form,}
-    return render(request, 'users/profile.html', context = context)
+        context = {'title': 'Профиль', 'form': form, }
+        return render(request, 'users/profile.html', context=context)
+
 
 
 def logout(request):
