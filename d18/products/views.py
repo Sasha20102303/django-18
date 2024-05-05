@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from.models import *
+from django.core.paginator import Paginator
 
 def index(request):
     context = {
@@ -9,7 +10,16 @@ def index(request):
     }
     return render(request, 'index.html', context = context)
 
-def products(request):
+def products(request ,category_id=None, page_namber=1):
+
+    if category_id:
+        products = Product.objects.fillter(category_id=category_id)
+    else:
+        products =Product.objects.all()
+    per_page = 3 #сколько товара на одной странице
+    paginator = Paginator(products, per_page)
+    products_paginator = paginator.page(page_namber)
+
     context = {
         'title': 'Рейх вещей',
         'products': Product.objects.all(),
@@ -17,7 +27,7 @@ def products(request):
 
     }
 
-    return render(request, 'products.html', context = context)
+    return render(request, 'products.html', context)
 
 def basket_add(request, product_id:id):
 
