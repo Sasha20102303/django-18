@@ -20,7 +20,7 @@ from products.views import *
 from django.conf.urls.static import static
 from django.conf import settings
 from django.urls import include
-from djano. contrib. auth
+from djano.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
